@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { addFormData } from '../utilities/localDB';
+import { useNavigate } from 'react-router-dom';
 
 const Form = () => {
 
-
+    const navigate = useNavigate();
     // single line radio button
     const [mcgOption, setMcqOption] = useState("");
     const handleRadioChange = (option) => {
@@ -132,7 +133,7 @@ const Form = () => {
 
         const formData = {
             "mcqAns": mcgOption,
-            "1d-checkbox": checkboxOptionArray,
+            "checkbox1d": checkboxOptionArray,
             'shortAns': form.shortAns.value,
             'paraAns': form.paraGraph.value,
             'dropDownAns': selectedOption,
@@ -142,19 +143,13 @@ const Form = () => {
             'gridCheckbox': selectedCheckboxValuesArray
         }
 
-        // console.log(mcqObj);
-        // console.log(checkbox1d);
-        // console.log(shortAns);
-        // console.log(paraAns);
-        console.log(formData);
+        //console.log(formData);
         
         addFormData(formData);
         form.reset();
+        navigate("/response", { replace: true });
         
 
-
-        // console.log('Radio 2D:', finalRaioObj);
-        // console.log('Checkbox 2D:', selectedCheckboxValuesArray);
     };
 
 
@@ -208,7 +203,7 @@ const Form = () => {
 
                         <div className='form-item'>
                             <label className='pb-5'>Drop down <span className='text-red-500'>*</span></label>
-                            <select name="selectOption" value={selectedOption} className='w-1/3 border border-slate-300 p-4 outline-0 mt-4 rounded' name="selectOption" value="">
+                            <select name="selectOption" value={selectedOption} className='w-1/3 border border-slate-300 p-4 outline-0 mt-4 rounded' onChange={handleOptionChange}>
                                 <option value="" disabled>Select an option</option>
                                 <option value="option1" >Option 1</option>
                                 <option value="option2">Option 2</option>
