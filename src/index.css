@@ -13,3 +13,11 @@ label {
 .form-item{
     @apply flex flex-col bg-white p-6 my-2.5 border border-[#d1d3d6] rounded-lg
 }
+
+/* input[type=radio]#Yellow {
+    accent-color: pink;
+} */
+input[type=radio] {
+    accent-color: purple;
+    height: 18px;
+}
