@@ -23,7 +23,7 @@ const Response = () => {
 
     return (
         <div className='h-full  bg-[#F0EBF8] pt-4 pb-32'>
-            <div className="w-[650px] mx-auto h-full  bg-[#F0EBF8] ">
+            <div className="w-[650px] mx-auto ">
                 <div className='flex flex-col bg-white p-6 my-2.5 rounded-lg  border-t-8 border-purple-700'>
                     <h1 className='text-2xl py-4'>Thank you submit the assignment</h1>
                     <hr />
@@ -83,7 +83,7 @@ const Response = () => {
                         <p className='py-4'>Multi choice Grid Answer</p>
                         {
                             formData?.gridRadio?.map((item, index) => {
-                                return <span className='text-sm text-green-500' key={index}>row{index}-{ item.map((it, id)=> { return it==1 ? `col${id+1}`: ""} )}, </span>
+                                return <span className='text-sm text-green-500' key={index}>row{index+1}-{ item.map((it, id)=> { return it==1 ? `col${id+1}`: ""} )}, </span>
                                 //return console.log(item)
                             })
                         }
@@ -93,7 +93,7 @@ const Response = () => {
                         <p className='py-4'>Tick box Grid </p>
                         {
                             formData?.gridCheckbox?.map((item, index) => {
-                                return <span className='text-sm text-green-500' key={index}>row{index}-{ item.map((it, id)=> { return it==1 ? `col${id+1}`: ""} )}, </span>
+                                return <span className='text-sm text-green-500' key={index}>{ item.map((it, id)=> { return it==1 ? `row${index+1}-col${id+1} , `: ""} )} </span>
                             })
                         }
                     </div>
